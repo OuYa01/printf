@@ -22,12 +22,14 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 				{
-					char character = va_arg(osarg, int); c++;
+					putchar(va_arg(osarg, int));
+					c++;
 					break;
 				}
 				case '%':
 				{
-					putchar('%'); c++;
+					putchar('%');
+					c++;
 					break;
 				}
 				case 's':
