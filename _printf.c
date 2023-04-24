@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include <unistd.h>
 
 /**
  * _printf - function that produces output like real printf
@@ -11,6 +12,7 @@ int _printf(const char *format, ...)
 {
 	va_list osarg;
 	int c = 0;
+	int i;
 
 	va_start(osarg, format);
 	while (*format != '\0')
@@ -22,26 +24,35 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 				{
-					putchar(va_arg(osarg, int));
+					char character = va_arg(osarg, int);
+
+					write(STDOUT_FILENO, &character, 1);
 					c++;
 					break;
 				}
 				case '%':
 				{
-					putchar('%');
+					write(STDOUT_FILENO, "%", 1);
 					c++;
 					break;
 				}
 				case 's':
 				{
-					c += fputs(va_arg(osarg, char*), stdout);
-					break;
+					char *string = va_arg(osarg, char*);
+
+					i = 0;
+					while (string[i] != '\0')
+					{
+						write(STDOUT_FILENO, &string[i], 1);
+						i++;
+						c++;
+					}
 				}
 			}
 		}
 		else
 		{
-			putchar(*format);
+			write(1, format, 1);
 			c++;
 		}
 		format++;
