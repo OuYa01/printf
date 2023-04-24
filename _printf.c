@@ -32,7 +32,11 @@ int _printf(const char *format, ...)
 					putchar('%');
 					break;
 				}
-
+				case 's':
+				{
+					fputs(va_arg(osarg, char*), stdout);
+					break;
+				}
 			}
 		}
 		else
