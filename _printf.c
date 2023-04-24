@@ -25,16 +25,19 @@ int _printf(const char *format, ...)
 					char character = va_arg(osarg, int);
 
 					putchar(character);
+					c++;
 					break;
 				}
 				case '%':
 				{
 					putchar('%');
+					c++;
 					break;
 				}
 				case 's':
 				{
 					fputs(va_arg(osarg, char*), stdout);
+					c++;
 					break;
 				}
 			}
