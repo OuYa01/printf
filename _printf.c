@@ -22,22 +22,17 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 				{
-					char character = va_arg(osarg, int);
-
-					putchar(character);
-					c++;
+					char character = va_arg(osarg, int); c++;
 					break;
 				}
 				case '%':
 				{
-					putchar('%');
-					c++;
+					putchar('%'); c++;
 					break;
 				}
 				case 's':
 				{
-					fputs(va_arg(osarg, char*), stdout);
-					c++;
+					c += fputs(va_arg(osarg, char*), stdout);
 					break;
 				}
 			}
