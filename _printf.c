@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 	int i;
 
 	va_start(osarg, format);
-	for (*format != '\0')
+	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 					char *string = va_arg(osarg, char*);
 
 					i = 0;
-					for (string[i] != '\0')
+					while (string[i] != '\0')
 					{
 						write(STDOUT_FILENO, &string[i], 1);
 						i++;
