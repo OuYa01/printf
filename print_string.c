@@ -7,7 +7,7 @@
  *
  * @string: the string to print
  *
- * return: the number of charcters in the string to print
+ * Return: the number of charcters in the string to print
  */
 int print_string(char *string)
 {
@@ -17,8 +17,8 @@ int print_string(char *string)
 		string = "(null)";
 	while (string[i] != '\0')
 	{
-        	write(STDOUT_FILENO, &string[i], 1);
-        	i++;
+		write(STDOUT_FILENO, &string[i], 1);
+		i++;
 	}
 	return (i);
 }
