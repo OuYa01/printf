@@ -45,7 +45,7 @@ int _printf(const char *format, ...)
 
 				i = 0;
 				if (string == NULL)
-					string = "(NULL)";
+					string = "(null)";
 				while (string[i] != '\0')
 				{
 					write(STDOUT_FILENO, &string[i], 1);
@@ -56,17 +56,16 @@ int _printf(const char *format, ...)
 			}
 			default:
 			{
-				char character = *format;
-
-				write(STDOUT_FILENO, &character, 1);
-				c++;
+				write(STDOUT_FILENO, "%", 1);
+				write(STDOUT_FILENO, &*format, 1);
+				c = c + 2;
 				break;
 			}
 			}
 		}
 		else
 		{
-			write(1, format, 1);
+			write(STDOUT_FILENO, format, 1);
 			c++;
 		}
 		format++;
