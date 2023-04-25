@@ -14,6 +14,9 @@ int _printf(const char *format, ...)
 	int c = 0;
 	int i;
 
+	if (format == NULL)
+		return (-1);
+
 	va_start(osarg, format);
 	while (*format != '\0')
 	{
@@ -22,32 +25,43 @@ int _printf(const char *format, ...)
 			format++;
 			switch (*format)
 			{
-				case 'c':
-				{
-					char character = va_arg(osarg, int);
+			case 'c':
+			{
+				char character = va_arg(osarg, int);
 
-					write(STDOUT_FILENO, &character, 1);
-					c++;
-					break;
-				}
-				case '%':
-				{
-					write(STDOUT_FILENO, "%", 1);
-					c++;
-					break;
-				}
-				case 's':
-				{
-					char *string = va_arg(osarg, char*);
+				write(STDOUT_FILENO, &character, 1);
+				c++;
+				break;
+			}
+			case '%':
+			{
+				write(STDOUT_FILENO, "%", 1);
+				c++;
+				break;
+			}
+			case 's':
+			{
+				char *string = va_arg(osarg, char*);
 
-					i = 0;
-					while (string[i] != '\0')
-					{
-						write(STDOUT_FILENO, &string[i], 1);
-						i++;
-						c++;
-					}
+				i = 0;
+				if (string == NULL)
+					string = "(NULL)";
+				while (string[i] != '\0')
+				{
+					write(STDOUT_FILENO, &string[i], 1);
+					i++;
+					c++;
 				}
+				break;
+			}
+			default:
+			{
+				char character = *format;
+
+				write(STDOUT_FILENO, &character, 1);
+				c++;
+				break;
+			}
 			}
 		}
 		else
