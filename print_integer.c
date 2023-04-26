@@ -12,6 +12,6 @@ int print_integer(int num)
 	char buff[20];
 	int l = snprintf(buff, 20, "%d", num);
 
-	write(STDOUT_FILEND, buff, l);
+	write(STDOUT_FILENO, buff, l);
 	return (l);
 }
