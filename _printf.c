@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	va_list osarg;
 	int c = 0;
 
-	if (format == NULL)
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 
 	va_start(osarg, format);
@@ -28,8 +28,10 @@ int _printf(const char *format, ...)
 		{
 			c += print_character(*format);
 		}
+
 		format++;
 	}
 	va_end(osarg);
+
 	return (c);
 }
