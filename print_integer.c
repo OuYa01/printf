@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_interger - it is a new function that prints int= like
+ * print_integer - it is a new function that prints int= like
  * printf
  * @num: a variable
  * Return: always l
