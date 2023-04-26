@@ -25,6 +25,10 @@ int switches(char s, va_list osarg)
 	case '%':
 		c += print_character('%');
 		break;
+	case 'i':
+	case 'd':
+		c += print_integer(va_arg(osarg, int));
+		break;
 	default:
 		c += print_character('%');
 		c += print_character(s);
