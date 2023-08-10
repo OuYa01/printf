@@ -24,5 +24,7 @@
 * Note that we will not provide the _putchar function for this project
 ## Tasks
 
-| Task | File |
-| make your owen printf| *.c |
+| Task                    | File  |
+|-------------------------|-------|
+| Make your own printf    | *.c   |
+
